@@ -97,7 +97,7 @@ app.get('/:id', async(req,res,next)=>{
     }
 })
 
-app.get('/postList/api/users',async(req,res,next)=>{
+app.get('/api/users',async(req,res,next)=>{
     try{
         const users = await Users.findAll({
             include: [
@@ -112,7 +112,7 @@ app.get('/postList/api/users',async(req,res,next)=>{
     }
 })
 
-app.get('/postList/api/posts',async(req,res,next)=>{
+app.get('/api/posts',async(req,res,next)=>{
     try{
         const posts = await Posts.findAll({
             include: [
