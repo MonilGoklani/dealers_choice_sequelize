@@ -7,8 +7,36 @@ const {Op} = require('sequelize')
 const app = express()
 const path = require('path')
 
-app.use('/public',express.static(path.join(__dirname+'/public')))
 
+app.use('/public',express.static(path.join(__dirname+'/public')))
+app.use(express.urlencoded({extended:false}))
+
+app.post('/',async(req,res,next)=>{
+    try{
+        const newUser = await Users.create({name:req.body.name})
+        const newPost = await Posts.create({post:req.body.post})
+        newPost.userId= newUser.id
+        await newPost.save()
+        res.redirect('/')
+
+    }catch(error){
+        next(error)
+    }
+})
+
+app.post('/:id',async(req,res,next)=>{
+    try{
+        const newUser = await Users.create({name:req.body.name})
+        const newPost = await Posts.create({post:req.body.post})
+        newPost.userId= newUser.id
+        newPost.parentPostId=req.params.id
+        await newPost.save()
+        res.redirect(`/${req.params.id}`)
+
+    }catch(error){
+        next(error)
+    }
+})
 
 app.get('/',async(req,res,next)=>{
     try{

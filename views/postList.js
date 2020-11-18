@@ -15,7 +15,7 @@ const postList = async() => {
                 }
             ],
             order:[
-                ['post']
+                ['createdAt']
             ],
             where: {
                 parentPostId: {
@@ -46,12 +46,21 @@ const postList = async() => {
             `).join('')}
             </ol>
             </div>
+            <div class = 'form'>
+            <form method='POST'>
+            <label for='post'>POST HERE</label>
+            <input name = 'post'></input>
+            <label for='name'>ENTER NAME</label>
+            <input name = 'name'></input>
+            <button>Submit</button>
+            </form>
+            <div>
        </body>
        </html> 
         `
     return html
     }catch(error){
-        next(error)
+        console.log(error)
     }
 }
 

@@ -4,7 +4,7 @@ const {Op} = require('sequelize')
 
 const postThread = async(id) => {
 try{
-        const posts = await Posts.findAll({
+        let posts = await Posts.findAll({
             include: [
                 {
                     model:Posts,
@@ -45,6 +45,8 @@ try{
         });
 
 
+  let mainPost = await Posts.findByPk(id)
+
 const html =`
         <html>
         <head>
@@ -59,7 +61,7 @@ const html =`
                  </ul>
              </div>
              <div>
-             <h2 class = 'postTitles'>${posts[0].parentPost.post}</h2>
+             <h2 class = 'postTitles'>${mainPost.post}</h2>
              <h3>Replies/Comments</h3>
                 <ol>
                 ${posts.map(post=>`
@@ -70,6 +72,15 @@ const html =`
                 </ol>
                 <h2><a href = '/'> <<< Back </a></h2>            
              </div>
+             <div class = 'form'>
+             <form method='POST'>
+             <label for='post'>REPLY/COMMENT HERE</label>
+             <input name = 'post'></input>
+             <label for='name'>ENTER NAME</label>
+             <input name = 'name'></input>
+             <button>Submit</button>
+             </form>
+             <div>
         </body>
         </html> 
          `
