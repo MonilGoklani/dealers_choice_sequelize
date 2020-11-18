@@ -11,7 +11,11 @@ const path = require('path')
 app.use('/public',express.static(path.join(__dirname+'/public')))
 app.use(express.urlencoded({extended:false}))
 
-app.post('/',async(req,res,next)=>{
+app.get('/',(req,res,next)=>{
+    res.redirect('/postList')
+})
+
+app.post('/postList',async(req,res,next)=>{
     try{
         const newUser = await Users.create({name:req.body.name})
         const newPost = await Posts.create({post:req.body.post})
@@ -39,7 +43,7 @@ app.post('/:id',async(req,res,next)=>{
     }
 })
 
-app.get('/',async(req,res,next)=>{
+app.get('/postList',async(req,res,next)=>{
     try{
         const parentPosts = await Posts.findAll({
             include: [
@@ -93,7 +97,7 @@ app.get('/:id', async(req,res,next)=>{
     }
 })
 
-app.get('/api/users',async(req,res,next)=>{
+app.get('/postList/api/users',async(req,res,next)=>{
     try{
         const users = await Users.findAll({
             include: [
@@ -108,7 +112,7 @@ app.get('/api/users',async(req,res,next)=>{
     }
 })
 
-app.get('/api/posts',async(req,res,next)=>{
+app.get('/postList/api/posts',async(req,res,next)=>{
     try{
         const posts = await Posts.findAll({
             include: [
