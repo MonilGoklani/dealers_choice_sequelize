@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:dev": "npx kill-port 3000 && nodemon server"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/MonilGoklani/dealers_choice_sequelize/issues"
   },
-  "homepage": "https://github.com/MonilGoklani/dealers_choice_sequelize#readme"
+  "homepage": "https://github.com/MonilGoklani/dealers_choice_sequelize#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pg": "^8.5.1",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
 }

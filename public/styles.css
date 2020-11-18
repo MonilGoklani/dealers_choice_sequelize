@@ -1,0 +1,46 @@
+body{
+    display:flex;
+    flex-direction: column;
+}
+
+body>h1{
+    display:flex;
+    justify-content: center;
+    background-color: aliceblue;
+    font-size: 100px;
+    margin:0;
+}
+
+#nestedObject>ul{
+    list-style: none;
+    font-size: 30px;
+    background-color: rgb(161, 175, 175);
+}
+
+a{
+    text-decoration: none;
+    color:rgb(0, 0, 0)
+}
+
+.posts{
+    background-color: beige;  
+}
+
+.postTitles{
+    font-size:45px;
+    color: rgb(0, 0, 0);
+    background-color:rgb(150, 224, 169);
+    margin:0;
+    padding:0 0 0 2rem;
+}
+
+.replies{
+    background-color: beige;  
+    font-size: 30px;
+    margin:1rem 0 1rem 0
+}
+
+
+.by{
+    font-size: 16px;
+}
