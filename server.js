@@ -16,6 +16,7 @@ app.post('/',async(req,res,next)=>{
         const newUser = await Users.create({name:req.body.name})
         const newPost = await Posts.create({post:req.body.post})
         newPost.userId= newUser.id
+        newPost.parentPostId=null
         await newPost.save()
         res.redirect('/')
 
