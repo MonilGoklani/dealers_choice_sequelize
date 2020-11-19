@@ -41,7 +41,11 @@ const postList = async() => {
             <ol>
             ${parentPosts.map(parentPost=>`
             <li class = 'posts'>
-            <a href = '/${parentPost.id}'>${parentPost.post}</a><small class = 'by'> by ${parentPost.user.name}</small>
+            <a href = '/api/postList/${parentPost.id}'>${parentPost.post}</a>
+            <small class = 'by'> by ${parentPost.user.name}</small>
+            <form method='POST' action='/api/postList/${parentPost.id}?_method=DELETE'>
+            <button> delete </button>
+            </form>
             </li>
             `).join('')}
             </ol>
@@ -49,7 +53,7 @@ const postList = async() => {
             <div class = 'form'>
             <form method='POST'>
             <label for='post'>POST HERE</label>
-            <input name = 'post'></input>
+            <input name = 'post' id='inputpost'></input>
             <label for='name'>ENTER NAME</label>
             <input name = 'name'></input>
             <button>Submit</button>

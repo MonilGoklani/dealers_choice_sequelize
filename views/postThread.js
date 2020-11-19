@@ -66,21 +66,25 @@ const html =`
                 <ol>
                 ${posts.map(post=>`
                 <li class = 'replies'>
-                ${post.post} <small class = 'by'>by  ${post.user.name} on ${post.createdAt}</small>
+                ${post.post} 
+                <small class = 'by'>by  ${post.user.name} on ${post.createdAt}</small>
+                <form method='POST' action='/api/postList/postThread/${post.id}?_method=DELETE'>
+                <button> delete </button>
+                </form>
                 </li>
                 `).join('')}
-                </ol>
-                <h2><a href = '/'> <<< Back </a></h2>            
+                </ol>          
              </div>
              <div class = 'form'>
              <form method='POST'>
              <label for='post'>REPLY/COMMENT HERE</label>
-             <input name = 'post'></input>
+             <input name = 'post' id='inputpost'></input>
              <label for='name'>ENTER NAME</label>
              <input name = 'name'></input>
              <button>Submit</button>
              </form>
              <div>
+             <h2><a href = '/'> <<< Back </a></h2>  
         </body>
         </html> 
          `

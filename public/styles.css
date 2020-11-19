@@ -44,3 +44,14 @@ a{
 .by{
     font-size: 16px;
 }
+
+#inputpost{
+    height:100px;
+    width:800px;
+}
+
+form{
+    margin:1rem 0 0 0;
+    display: inline-block;
+}
+
